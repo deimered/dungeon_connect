@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tasks
+    </ion-title>
+    <ion-buttons slot="end">
+      <button (click)="addTask()">+ADD ITEM</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-list>
+    <ion-item-sliding #slidingItem *ngFor="let task of tasks">
+
+      <ion-item [ngClass]="{taskDone: task.status == 'done'}">
+        {{task.title}}
+      </ion-item>
+
+      <ion-item-options side="end" (ionSwipe)="removeTask(slidingItem,task)">
+
+        <ion-button (click)="markAsDone(slidingItem, task)" color="secondary">
+          <ion-icon *ngIf="task.status == 'done'; else conditionFalse" name="checkmark-circle-outline"></ion-icon>
+          <ng-template #conditionFalse>
+            <ion-icon name="checkmark-circle"></ion-icon>
+          </ng-template>
+          
+        </ion-button>
+
+        <ion-button (click)="removeTask(slidingItem, task)"color="danger">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list> 
+
+  <!--<div id="container">
+    <strong>Ready to create an app?</strong>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div>-->
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="medium">
+  <ion-title (click)="logout()">Log out</ion-title>
+  </ion-toolbar>
+ </ion-footer>
+ 

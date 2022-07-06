@@ -1,0 +1,47 @@
+<app-top-bar></app-top-bar>
+
+<ion-content>
+  <ion-header collapse="fade" class="ion-no-border">
+    <ion-toolbar [style]="'box-shadow: 0px 0px 0px 1px black;'">
+      <div>
+        <ion-tab-button>
+          <ion-icon name="map-sharp" style="color:#0C5FDB;"></ion-icon>
+          <ion-label style="color:#0C5FDB;">Mapas</ion-label>
+        </ion-tab-button>
+      </div>
+
+      <div>
+        <ion-tab-button>
+          <ion-icon name="book-outline" style="color:#08A835;"></ion-icon>
+          <ion-label style="color:#08A835;">Histórias</ion-label>
+        </ion-tab-button>
+      </div>
+
+      <div>
+        <ion-tab-button>
+          <ion-icon name="people" style="color:#D89004;"></ion-icon>
+          <ion-label style="color:#D89004;">Personagens</ion-label>
+        </ion-tab-button>
+      </div>
+
+      <div>
+        <ion-tab-button>
+          <ion-icon name="document-outline" style="color:#B844FF;"></ion-icon>
+          <ion-label style="color:#B844FF;">Regras</ion-label>
+        </ion-tab-button>
+      </div>
+     
+    </ion-toolbar>
+  </ion-header>
+
+<!--Usar o for-->
+  <ion-list lines="none">
+    <ion-item *ngFor="let content of contents" button (click)="goLibraryItemPage(content)">
+      <img [src]="content.imageUrl" />
+      <ion-label>
+        {{content.title}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

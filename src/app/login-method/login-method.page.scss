@@ -1,0 +1,35 @@
+ion-content{
+    --ion-background-color: #F7F7F7;
+
+    img{
+        margin-top: 40%;    
+    }
+
+    div{
+        width: 100%;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+        display: inline-block;
+
+        ion-button{
+            margin-top: 10%;
+            --border-radius: 30px;
+            width: 70%;
+            font-size: 65%;
+            --background: #EEF1F4;
+            --color: #667080;
+
+            ion-img{
+                margin-left: 6%;
+                width: 8%;
+            }
+        }
+
+        ion-button.conta{
+            --background: red;
+            --color: #F7F7F7;
+        }
+    }  
+}
+

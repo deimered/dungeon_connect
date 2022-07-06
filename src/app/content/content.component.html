@@ -1,0 +1,62 @@
+<div class="titleImg">
+  <ion-label>{{content.title}}</ion-label>
+</div>
+<div class="titleImg">
+  <img [src]="content.imageUrl" />
+</div>
+
+<div class="content" *ngIf="content.type=='historia' || content.type =='regra'">
+  <ion-item>
+    <ion-textarea readonly="true" [value]="content.type=='historia' ? contentInformation.history :
+    contentInformation.rule" autoGrow="true"></ion-textarea>
+  </ion-item>
+</div>
+
+<div id="ficha" *ngIf="content.type=='ficha'">
+  <ion-list lines="floating">
+    <ion-item> 
+      <ion-label position="fixed">Nome</ion-label>
+      <ion-input readonly="true" [value]="contentInformation.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Classe</ion-label>
+      <ion-input readonly="true" [value]="contentInformation.job"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Raça</ion-label>
+      <ion-input readonly="true" [value]="contentInformation.race"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Força</ion-label>
+      <ion-input readonly="true" [value]="contentInformation.str"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Destreza</ion-label>
+      <ion-input readonly="true" [value]="contentInformation.dex"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Constituição</ion-label>
+      <ion-input readonly="true" [value]="contentInformation.cos"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Inteligência</ion-label>
+      <ion-input readonly="true" [value]="contentInformation.int"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Sabedoria</ion-label>
+      <ion-input readonly="true" [value]="contentInformation.wis"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Carisma</ion-label>
+      <ion-input readonly="true" [value]="contentInformation.car"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="dadoVida" position="fixed">Dados de vida</ion-label>
+      <ion-input readonly="true" [value]="contentInformation.ht"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Movimento</ion-label>
+      <ion-input readonly="true" [value]="contentInformation.mov"></ion-input>
+    </ion-item>
+  </ion-list>
+</div>

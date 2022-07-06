@@ -1,0 +1,9 @@
+<app-top-bar></app-top-bar>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+  </ion-header>
+
+  <app-content-card *ngFor="let content of contents" [content]="content"></app-content-card>
+
+</ion-content>

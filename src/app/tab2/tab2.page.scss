@@ -1,0 +1,65 @@
+section{
+    width: 100%;
+    align-items:center;
+    justify-content:left;
+    display: inline-flex;
+    margin-left: 10%;
+}
+
+ion-button{
+    --color:#667080;
+    --border-color: black;
+    --border-width: 1px;
+    font-size: 60%;
+}
+
+section#sectionAvatar {
+    margin-top: 10%;
+
+    ion-avatar{
+        border-radius: 50%;
+    }
+
+    ion-label{
+        padding-left: 5%;
+    }
+}
+
+section#nomeFoto {
+
+    ion-button{
+        width: 34%;
+        margin-left: 4%;
+    }
+}
+
+section#password{
+    margin-left: 0%;
+    justify-content:center;
+
+    ion-button{
+        width: 44%;
+        font-size: 60%;
+    }
+}
+
+section#inscricoes{
+    display: block;
+    margin-top: 10%;
+
+    ion-item{
+        max-width: 90% !important;
+    }
+
+    ion-button{
+        --color:#ffffff;
+        --background:red;
+    }
+}
+
+section#sair{
+    justify-content:right;
+    margin-left: 0%;
+    padding-right: 5%;
+
+}

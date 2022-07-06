@@ -1,0 +1,40 @@
+ion-img{
+    height: 183px;
+}
+
+ion-card{
+    margin-bottom: 50px;
+}
+
+ion-card-content{
+    border: 2px solid #667080;
+}
+
+.like{
+    font-size: 200%;
+    color: #4ECB71; 
+}
+
+.dislike{
+    font-size: 200%;
+    color: #F24E1E;
+    padding-left: 10%;
+}
+
+.messages{
+    font-size: 200%;
+    color: #699BF7;
+    padding-left: 10%;
+}
+
+.numbers{
+    padding-top: 2%;
+    padding-left: 1%;
+}
+
+div {
+    width: 100%;
+    align-items:center;
+    justify-content:left;
+    display: inline-flex;
+  }

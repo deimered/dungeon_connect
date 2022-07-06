@@ -1,0 +1,29 @@
+<app-top-bar></app-top-bar>
+
+<ion-content *ngIf="content!=undefined && contentDetails!=undefined">
+  <app-content [content]="content" [contentInformation]="contentDetails"></app-content>
+
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+    </ion-avatar>
+
+    <ion-label>
+      <h2>{{publisher.name}}</h2>
+    </ion-label>
+
+    <ion-button fill="outline" slot="end" strong="true">Download</ion-button>
+  </ion-item>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button fill="outline" (click)="goBack()">
+      <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button slot="end" fill="outline" strong="true" (click)="remove()">Remover</ion-button>
+  </ion-toolbar>
+</ion-footer>
+

@@ -1,0 +1,21 @@
+section{
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+
+    ion-button.red{
+        --color:#ffffff;
+        --background:red;
+    }
+
+    ion-button.white{
+        --color:#000000;
+        --background:white;
+    }
+
+}
+
+div{
+    margin-top: 15%;
+}
+

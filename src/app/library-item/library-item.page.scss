@@ -1,0 +1,19 @@
+ion-button{
+    --color:#667080;
+    --border-color: black;
+    --border-width: 1px;
+    font-size: 60%;
+}
+
+ion-footer{
+
+    ion-button{
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+}
+
+ion-item{
+    margin-left: 5%;
+    margin-right: 4%;
+}

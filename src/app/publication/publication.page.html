@@ -1,0 +1,59 @@
+<app-top-bar></app-top-bar>
+
+<ion-content *ngIf="content!=undefined && contentDetails!=undefined">
+  <app-content [content]="content" [contentInformation]="contentDetails"></app-content>
+
+
+  <section>
+    <ion-item lines="none">
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="thumbs-up" style="color: #4ECB71;"></ion-icon>
+      </ion-button>
+      
+      <ion-label class="numbers">{{content.nLikes}}</ion-label>
+
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="thumbs-down" style="color: #F24E1E;"></ion-icon>
+      </ion-button>
+
+      <ion-label class="numbers">{{content.nDislikes}}</ion-label>
+
+      <ion-button [class]="this.hasSavedInLibrary ? 'white' : 'red'" slot="end" (click)="saveContent()">
+        Guardar
+        <ion-icon [name]="this.hasSavedInLibrary ? 'checkmark-circle-outline' : 'add-circle-outline'"></ion-icon>      
+      </ion-button>
+    </ion-item>
+  </section>
+
+  <section>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+      </ion-avatar>
+  
+      <ion-label>
+        <h2>{{publisher.name}}</h2>
+      </ion-label>
+  
+      <ion-button [class]="this.hasSubscribed ? 'white' : 'red'" slot="end" (click)="followUser()">
+        Seguir
+        <ion-icon [name]="this.hasSubscribed ? 'checkmark-circle-outline' : 'add-circle-outline'"></ion-icon>      
+      </ion-button>
+    </ion-item>
+  </section>
+
+  <div>
+    <ion-list lines="none">
+      <ion-item *ngFor="let comment of comments">
+        <ion-avatar slot="start">
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+        </ion-avatar>
+        <ion-label>
+          <h2>{{comment.comment}}</h2>
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+  </div>
+
+</ion-content>

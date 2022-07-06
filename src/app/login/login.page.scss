@@ -1,0 +1,49 @@
+.error-message {
+    color: var(--ion-color-danger);
+}
+
+.go-to-register {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.submit-btn {
+    //position: fixed;
+    //bottom: 4%;
+    //right: 3%;
+    float: right;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.validation-errors{
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+ion-content{
+    --ion-background-color: #F7F7F7;
+
+    img{
+        margin-top: 40%;    
+    }
+}
+
+ion-button{
+    --color:black;
+    --border-color: black;
+    --border-width: 1px;
+    font-size: 80%;
+}
+
+ion-item{
+    margin-top: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+    --border-width: 1px;
+    --border-color: black;
+    --border-radius: 10px;
+    --color:black;
+}

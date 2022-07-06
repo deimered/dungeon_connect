@@ -1,0 +1,57 @@
+
+<ion-content padding class="form-content">
+  <form class="form" [formGroup]="validations_form" (ngSubmit)="tryRegister(validations_form.value)">
+
+    <img src="../../assets/dnd_logo.png">
+    
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div class= "error-message" *ngIf="validations_form.get('email').hasError(validation.type) &&
+          (validations_form.get('email').dirty || validations_form.get('email').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.name">
+        <div class= "error-message" *ngIf="validations_form.get('name').hasError(validation.type) &&
+          (validations_form.get('name').dirty || validations_form.get('name').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div class="error-message" *ngIf="validations_form.get('password').hasError(validation.type) &&
+          (validations_form.get('password').dirty || validations_form.get('password').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <p class="go-to-login">Já possui uma conta? <a (click)="goLoginPage()">Log In.</a></p>
+
+    <div class="submit-btn">
+      <ion-button fill="outline" strong="true" type="submit" [disabled]="!validations_form.valid">Registar</ion-button>
+    </div>
+  </form>
+
+</ion-content> 
+ 

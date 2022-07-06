@@ -1,0 +1,56 @@
+<app-top-bar></app-top-bar>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+  </ion-header>
+
+  
+
+  <section id="sectionAvatar">
+  <ion-avatar class="ion-float-left">
+    <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+  </ion-avatar>
+
+  <ion-label>{{currentUser.name}}</ion-label>
+
+  </section>
+
+  <section id="nomeFoto">
+      <ion-button fill="outline" strong="true">Mudar nome</ion-button>
+      <ion-button fill="outline" strong="true">Alterar a foto</ion-button>
+  </section>
+
+  <section id="password">
+    <ion-button fill="outline" strong="true">Mudar a password</ion-button>
+  </section>
+  
+
+  <section id="inscricoes">
+    <ion-label>Inscrições</ion-label>
+
+    <ion-list lines="none">
+      <ion-item *ngFor="let user of users">
+        <ion-avatar slot="start">
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+        </ion-avatar>
+        <ion-label>
+          <h2>{{user.name}}</h2>
+        </ion-label>
+        <ion-button slot="end" (click)="unfollowUser(user)">
+          Abandonar
+          <ion-icon name="remove-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </section>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <section id="sair">
+      <ion-button fill="outline" strong="true" (click)="logout()">Sair</ion-button>
+    </section>
+  </ion-toolbar>
+</ion-footer>
+

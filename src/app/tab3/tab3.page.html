@@ -1,0 +1,110 @@
+<app-top-bar></app-top-bar>
+
+<ion-content [fullscreen]="true" class="scroller">
+  <ion-header collapse="condense">
+  </ion-header>
+
+  <div id="tipoPublicacao">
+    <ion-label>Tipo de publicação</ion-label>
+    <ion-list lines="none">    
+      <ion-item>
+        <ion-select interface="popover" [(ngModel)]="type">
+          <ion-select-option value="historia">História</ion-select-option>
+          <ion-select-option value="regra">Regra</ion-select-option>
+          <ion-select-option value="mapa">Mapa</ion-select-option>
+          <ion-select-option value="ficha">Ficha de personagem</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <form class="form" [formGroup]="type=='historia' || type =='regra' ? validations_form_his_rule : 
+                                  type=='ficha' ? validations_form_char : validations_form">
+
+    <div class="content">
+      <ion-label position="stacked">Título</ion-label>
+      <ion-item lines="none">
+        <ion-input formControlName="title" inputmode="text" clearInput="true" name="titulo"></ion-input>
+      </ion-item>
+    </div>
+
+    <div class="content" *ngIf="type=='historia' || type =='regra'">
+      <ion-label position="stacked">{{type=='historia' ? 'História' : 'Regra'}}</ion-label>
+      <ion-item>
+        <ion-textarea formControlName="text" [name]="type=='historia' ? 'historia' : 'regra'"></ion-textarea>
+      </ion-item>
+    </div>
+
+    <div id="ficha" *ngIf="type=='ficha'">
+      <ion-list lines="floating">
+        <ion-item> 
+          <ion-label position="fixed">Nome</ion-label>
+          <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">Classe</ion-label>
+          <ion-input type="text" formControlName="class"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">Raça</ion-label>
+          <ion-input type="text" formControlName="race"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">Força</ion-label>
+          <ion-input type="number" formControlName="str"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">Destreza</ion-label>
+          <ion-input type="number" formControlName="dex"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">Constituição</ion-label>
+          <ion-input type="number" formControlName="cos"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">Inteligência</ion-label>
+          <ion-input type="number" formControlName="int"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">Sabedoria</ion-label>
+          <ion-input type="number" formControlName="wis"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">Carisma</ion-label>
+          <ion-input type="number" formControlName="car"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="dadoVida" position="fixed">Dados de vida</ion-label>
+          <ion-input type="text" formControlName="ht"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">Movimento</ion-label>
+          <ion-input type="text" formControlName="mov"></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div id="carregar">
+      <ion-button fill="outline" strong="true" (click)="uploadImage()">
+        Carregar {{type=='mapa' ? 'mapa' : 'imagem'}}
+        <ion-icon name="image-outline"></ion-icon>
+        <input type="file" id="inputFile" accept="image/*" (change)="chooseFile($event.target)">
+      </ion-button>
+    </div>
+
+</form>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <div id="publicar">
+      <ion-button type="submit" fill="outline" strong="true" [disabled]="(type=='historia' || type =='regra' ? !validations_form_his_rule.valid : 
+                                                                          type=='ficha' ? !validations_form_char.valid : !validations_form.valid) || !isImageChoosen || !ready"
+                                                              (click)="type=='historia' || type =='regra' ? tryPublish(validations_form_his_rule.value) : 
+                                                              type=='ficha' ? tryPublish(validations_form_char.value) : tryPublish(validations_form.value)">
+        Publicar
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

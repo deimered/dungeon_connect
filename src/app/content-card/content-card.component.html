@@ -1,0 +1,16 @@
+<ion-card (click)="goPublicationPage()">
+  <ion-img [src]="content.imageUrl"></ion-img>
+
+  <ion-card-content>
+    <div>
+    <ion-icon class="like" name="thumbs-up"></ion-icon>
+    <ion-label class="numbers">{{content.nLikes}}</ion-label>
+
+    <ion-icon class="dislike" name="thumbs-down"></ion-icon>
+    <ion-label class="numbers">{{content.nDislikes}}</ion-label>
+
+    <ion-icon class="messages" name="chatbox"></ion-icon>
+    <ion-label class="numbers">{{content.nComments}}</ion-label>
+  </div>
+  </ion-card-content>
+</ion-card>

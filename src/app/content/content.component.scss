@@ -1,0 +1,60 @@
+ion-item{
+    --border-width: 1px;
+    --border-color: black;
+    --border-radius: 10px;
+}
+
+div.titleImg{
+    width: 100%;
+    align-items:center;
+    display: inline-flex;
+    justify-content:center;
+    margin-top: 5%;
+
+    img{
+        margin-top: 10%;
+        height: 27vh;
+        width: 80%;
+    }
+
+    ion-label{
+        font-size: 170%;
+        margin-top: 5%;
+    }
+}
+
+div.content{
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+
+    ion-item{
+        margin-top: 4%;
+    }
+}
+
+div#ficha{
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+
+    ion-item{
+        margin-top: 2%;
+        --border-width: 0px;
+    }
+
+    ion-input{
+        opacity: 1 !important;
+        border: 1px solid black;
+        border-radius: 10px;
+        max-width: 100%;
+    }
+
+    ion-label{
+        opacity: 1 !important;
+    }
+
+    ion-label.dadoVida{
+        font-size: 90%;
+    }
+}

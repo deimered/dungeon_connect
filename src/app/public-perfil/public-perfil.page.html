@@ -1,0 +1,36 @@
+<app-top-bar></app-top-bar>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+  </ion-header>
+
+
+
+  <section id="sectionAvatar">
+    <ion-avatar class="ion-float-left">
+      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+    </ion-avatar>
+
+    <ion-label>{{user.name}}</ion-label>
+
+    <ion-button [class]="this.hasSubscribed ? 'white' : 'red'" slot="end" (click)="followUser()">
+      Seguir
+      <ion-icon [name]="this.hasSubscribed ? 'checkmark-circle-outline' : 'add-circle-outline'"></ion-icon>
+    </ion-button>
+
+  </section>
+
+  <section id="contents">
+    <ion-label>Publicações</ion-label>
+
+    <ion-list lines="none">
+      <ion-item button *ngFor="let content of contents" (click)="goPublicationPage(content)">
+        <img slot="start" [src]="content.imageUrl" />
+        <ion-label>
+          <h2>{{content.title}}</h2>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </section>
+
+</ion-content>

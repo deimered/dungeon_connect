@@ -24,6 +24,10 @@ const routes: Routes = [
         loadChildren: () => import('../library/library.module').then( m => m.LibraryPageModule)
       },
       {
+        path: 'library/:id',
+        loadChildren: () => import('../library/library.module').then( m => m.LibraryPageModule)
+      },
+      {
         path: 'library-item',
         loadChildren: () => import('../library-item/library-item.module').then( m => m.LibraryItemPageModule)
       },
@@ -38,6 +42,10 @@ const routes: Routes = [
       {
         path: 'publication/:id',
         loadChildren: () => import('../publication/publication.module').then( m => m.PublicationPageModule)
+      },
+      {
+        path: 'public-perfil/:id',
+        loadChildren: () => import('../public-perfil/public-perfil.module').then( m => m.PublicPerfilPageModule)
       },
       {
         path: '',

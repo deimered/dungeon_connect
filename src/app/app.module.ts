@@ -20,6 +20,8 @@ import {TopBarModule} from '../app/top-bar/top-bar.module'
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
+import { Firebase } from '@ionic-native/firebase/ngx';
+
 export const firebaseConfig = {
   apiKey: "AIzaSyA6csnJaook2SAPVfD69mVFjz5tLoRLQ7Y",
   authDomain: "ami-lab-a46348.firebaseapp.com",
@@ -48,7 +50,8 @@ const analytics = getAnalytics(app);
     ReactiveFormsModule,
     TopBarModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-              { provide: SETTINGS, useValue: {} }],
+              { provide: SETTINGS, useValue: {} },
+              Firebase],
   bootstrap: [AppComponent], 
 })
 export class AppModule {}

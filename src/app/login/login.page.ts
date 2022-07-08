@@ -3,6 +3,7 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { FireauthService } from '../fireauthservice.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import {FcmService} from '../fcm.service';
 
 
 @Component({
@@ -30,7 +31,9 @@ export class LoginPage implements OnInit {
   private authService: FireauthService,
   private formBuilder: FormBuilder,
   private router: Router,
-  public alertController: AlertController) { }
+  public alertController: AlertController,
+  private notifications: FcmService
+  ) { }
 
  ngOnInit() {
   this.validations_form = this.formBuilder.group({
@@ -39,14 +42,15 @@ export class LoginPage implements OnInit {
   Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')])),
 
   password: new FormControl('', Validators.compose([
-  Validators.minLength(5),
+  Validators.minLength(6),
   Validators.required])),
   });
  }
 
  tryLogin(value){
   this.authService.doLogin(value).then(res => {
-  this.router.navigate(["/tabs"]);}, err => {
+    this.notifications.initPush();
+    this.router.navigate(["/tabs"]);}, err => {
     this.showAlert("O Login falhou. Verefique se os dados introduzidos estão corretos.")
   this.errorMessage = err.message;
   console.log(err)

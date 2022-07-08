@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "605505859595",
+    "project_id": "ami-lab-a46348",
+    "storage_bucket": "ami-lab-a46348.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605505859595:android:0c2abe895a83fb5665970e",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605505859595-jlc8i28oi9ptnuoset6i7b6vi3m1nqs1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaSdIxFBwRZ0dzYxpAAmjO_3H4mw_JggY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605505859595-jlc8i28oi9ptnuoset6i7b6vi3m1nqs1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

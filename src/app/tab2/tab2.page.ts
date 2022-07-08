@@ -61,6 +61,10 @@ export class Tab2Page {
     );
   }
 
+  subscriptionPerfil(user){
+    this.router.navigate([`/tabs/public-perfil/${user.subID}`]);
+  }
+
   logout(){
     this.authService.doLogout().then(res => {
       this.router.navigate(["/login"]);

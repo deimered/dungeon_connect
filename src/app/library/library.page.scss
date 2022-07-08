@@ -2,9 +2,6 @@ ion-toolbar{
     text-align: center;
     div{
         display: inline-block;
-        //margin-left: 2.5%;
-        //margin-left: 2.5vw;
-        //margin: 0 auto;
         margin-left: 1%;
         margin-right: 1%;
         ion-tab-button{
@@ -21,8 +18,8 @@ ion-toolbar{
 
 ion-list{
     img{
-        width:31%;
-        height: 70%;
+        width:25vw;
+        height: 13vh;
     }
 
     ion-label{

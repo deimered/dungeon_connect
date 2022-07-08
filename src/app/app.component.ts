@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(
     public afAuth: AngularFireAuth,
     public router: Router,
-    public platform: Platform
+    public platform: Platform,
   ) {}
 
   ngOnInit() {
@@ -24,7 +24,6 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.afAuth.user.subscribe(user => {
       if(user){
-        //"/home"
         this.router.navigate(["/tabs"]);
       } else {
         this.router.navigate(["/login-method"]);
@@ -36,5 +35,5 @@ export class AppComponent {
       })
     //this.statusBar.styleDefault();
     });
-  } 
+  }
 }

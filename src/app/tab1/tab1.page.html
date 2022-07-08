@@ -1,9 +1,15 @@
 <app-top-bar></app-top-bar>
 
-<ion-content [fullscreen]="true">
+<ion-content id="cont" [fullscreen]="true">
   <ion-header collapse="condense">
   </ion-header>
 
-  <app-content-card *ngFor="let content of contents" [content]="content"></app-content-card>
+  <app-content-card *ngFor="let content of contentsAux" [content]="content"></app-content-card>
+
+  <ion-infinite-scroll threshold="100px" [disabled]="disableInfiniteScrolling" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>

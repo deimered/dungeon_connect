@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import {Content} from '../classes/content';
 import {FireserviceService} from '../fireservice.service'
 
-
-
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -11,14 +9,18 @@ import {FireserviceService} from '../fireservice.service'
 })
 export class Tab1Page {
 
-  contents: Array<Content> = [];
-
-  icon_benfica : string ="https://cdn.worldvectorlogo.com/logos/benfica.svg";
+  contents: Array<Content>;
+  contentsAux: Array<Content>;
+  idx: number;
+  disableInfiniteScrolling: boolean;
 
   constructor(public fser:FireserviceService) {}
 
   ngOnInit() {
     this.fser.getContents().subscribe(data => {
+      this.disableInfiniteScrolling = false;
+      this.idx = 0;
+      this.contentsAux = []
       this.contents = data.map(e => {
         return {
           $key: e.payload.doc.id,
@@ -30,15 +32,36 @@ export class Tab1Page {
           imageUrl: e.payload.doc.data()['imageUrl'],
         };
       });
-      console.log(this.contents);
+      //console.log(this.contents);
+      for(let i = 0; i < this.contents.length; i++){
+        this.contentsAux.push(this.contents[i]);
+        this.idx += 1;
+        if (this.idx == 3)
+          break;
+      }
     });
-    /*this.contents.push({$key: '111',
-                        title: 'eppep',
-                        type: 'mapa',
-                        nLikes: 6,
-                        nDislikes:6,
-                        nComments:6,
-                        imageUrl: this.icon_benfica});*/
+  }
+
+  ionViewWillEnter() {
+    
+  }
+
+  loadData(event) {
+    setTimeout(() => {
+      event.target.complete();
+
+      const dist = (this.contents.length - this.contentsAux.length) >= 3 ? 3 : this.contents.length - this.contentsAux.length;
+
+      for(let i = 0; i < dist; i++){
+        this.contentsAux.push(this.contents[this.idx + i]);
+      }
+
+      this.idx += 3;
+
+      if (this.contentsAux.length === this.contents.length) {
+        this.disableInfiniteScrolling = true;
+      }
+    }, 500);
   }
 
 }

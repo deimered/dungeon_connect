@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import { FireserviceService } from './fireservice.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import {FcmService} from './fcm.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class FireauthService {
   
  constructor(private firebaseService: FireserviceService,
-             public afAuth: AngularFireAuth){}
+             public afAuth: AngularFireAuth,
+             private notifications: FcmService){}
 
  doRegister(value){
   return new Promise<any>((resolve, reject) => {
@@ -34,6 +36,7 @@ export class FireauthService {
   return new Promise((resolve, reject) => {
     this.afAuth.signOut().then(() => {
       this.firebaseService.unsubscribeOnLogOut();
+      this.notifications.unregisterPush();
       resolve(undefined);
     }).catch((error) => {
       console.log(error);

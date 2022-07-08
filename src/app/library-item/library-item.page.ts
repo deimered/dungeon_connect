@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
 import { ActivatedRoute } from '@angular/router';
-import {Content} from '../classes/content';
-import {ContentCharacter} from '../classes/contentCharacter';
-import {ContentHistory} from '../classes/contentHistory';
-import {ContentMap} from '../classes/contentMap';
-import {ContentRule} from '../classes/contentRule';
-import {FireserviceService} from '../fireservice.service'
+import { Content } from '../classes/content';
+import { ContentCharacter } from '../classes/contentCharacter';
+import { ContentHistory } from '../classes/contentHistory';
+import { ContentMap } from '../classes/contentMap';
+import { ContentRule } from '../classes/contentRule';
+import { FireserviceService } from '../fireservice.service'
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -18,16 +20,19 @@ export class LibraryItemPage implements OnInit {
 
   content: Content;
   contentDetails: any;
-  publisher: any = {name:'', imageUrl:''};
+  publisher: any = { $key: '', name: '', imageUrl: '' };
+  subscriptionContent: Subscription;
+  subscriptionUser: Subscription;
 
   constructor(private location: Location,
-              public fser:FireserviceService,
-              private route: ActivatedRoute,) { }
+    public fser: FireserviceService,
+    private route: ActivatedRoute,
+    public router: Router) { }
 
   ngOnInit() {
     const key = this.route.snapshot.paramMap.get('id');
-    
-    this.fser.getContent(key).subscribe(data => {
+
+    this.subscriptionContent = this.fser.getContent(key).subscribe(data => {
       this.content = {
         $key: data.id,
         title: data.data()['title'],
@@ -40,9 +45,9 @@ export class LibraryItemPage implements OnInit {
 
 
       this.fser.getContentInformation(this.content).then(res => {
-        if (!res.empty){
+        if (!res.empty) {
 
-          switch(this.content.type){
+          switch (this.content.type) {
             case 'historia':
               this.contentDetails = {
                 $key: res.docs[0].id,
@@ -86,27 +91,38 @@ export class LibraryItemPage implements OnInit {
               break;
           }
         }
-        this.fser.getUser(this.contentDetails.user).subscribe(data => 
-          {this.publisher = {
+        this.subscriptionUser = this.fser.getUser(this.contentDetails.user).subscribe(data => {
+          this.publisher = {
             $key: data.id,
             name: data.data()['name'],
             imageUrl: data.data()['imageUrl'],
           }
-          });
+        });
+        //this.fser.saveSubscriptions(subUser);
       }).catch(error => {
-        console.log("getContentInformation: catch - " +error);
+        console.log("getContentInformation:  - " + error);
       });
     });
+    //this.fser.saveSubscriptions(sub);
   }
 
-  remove(){
+  ngOnDestroy(){
+    this.subscriptionContent.unsubscribe();
+    this.subscriptionUser.unsubscribe();
+  }
+
+  remove() {
     this.fser.removeLibrary(this.content.$key).then(
-      res => {this.goBack();}
+      res => { this.goBack(); }
     );
   }
 
-  goBack(){
+  goBack() {
     this.location.back();
+  }
+
+  subscriptionPerfil() {
+    this.router.navigate([`/tabs/public-perfil/${this.publisher.$key}`]);
   }
 
 }

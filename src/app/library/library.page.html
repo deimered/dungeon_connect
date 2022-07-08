@@ -2,30 +2,33 @@
 
 <ion-content>
   <ion-header collapse="fade" class="ion-no-border">
-    <ion-toolbar [style]="'box-shadow: 0px 0px 0px 1px black;'">
+    <ion-toolbar [style]="searchType == 'mapa' ? 'box-shadow: 0px 0px 0px 1px #0C5FDB' : 
+                          searchType == 'regra' ? 'box-shadow: 0px 0px 0px 1px #B844FF' : 
+                          searchType == 'ficha' ? 'box-shadow: 0px 0px 0px 1px #D89004' : 
+                          searchType == 'historia' ? 'box-shadow: 0px 0px 0px 1px #08A835' : 'box-shadow: 0px 0px 0px 1px black'">
       <div>
-        <ion-tab-button>
+        <ion-tab-button (click)="mapSearch()">
           <ion-icon name="map-sharp" style="color:#0C5FDB;"></ion-icon>
           <ion-label style="color:#0C5FDB;">Mapas</ion-label>
         </ion-tab-button>
       </div>
 
       <div>
-        <ion-tab-button>
+        <ion-tab-button (click)="historySearch()">
           <ion-icon name="book-outline" style="color:#08A835;"></ion-icon>
           <ion-label style="color:#08A835;">Histórias</ion-label>
         </ion-tab-button>
       </div>
 
       <div>
-        <ion-tab-button>
+        <ion-tab-button (click)="characterSearch()">
           <ion-icon name="people" style="color:#D89004;"></ion-icon>
           <ion-label style="color:#D89004;">Personagens</ion-label>
         </ion-tab-button>
       </div>
 
       <div>
-        <ion-tab-button>
+        <ion-tab-button (click)="ruleSeach()">
           <ion-icon name="document-outline" style="color:#B844FF;"></ion-icon>
           <ion-label style="color:#B844FF;">Regras</ion-label>
         </ion-tab-button>

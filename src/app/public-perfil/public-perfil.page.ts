@@ -18,8 +18,8 @@ export class PublicPerfilPage implements OnInit {
   hasSubscribed: boolean;
 
   constructor(private route: ActivatedRoute,
-              public fser: FireserviceService,
-              private router: Router) { }
+    public fser: FireserviceService,
+    private router: Router) { }
 
   ngOnInit() {
     const key = this.route.snapshot.paramMap.get('id');
@@ -43,17 +43,19 @@ export class PublicPerfilPage implements OnInit {
 
           this.contentsRef.forEach(ref => {
             this.fser.getContent(ref).subscribe(data => {
-              this.contents.push(
-                {
-                  $key: data.id,
-                  title: data.data()['title'],
-                  type: data.data()['type'],
-                  nLikes: data.data()['nLikes'],
-                  nDislikes: data.data()['nDislikes'],
-                  nComments: data.data()['nComments'],
-                  imageUrl: data.data()['imageUrl'],
-                }
-              );
+              if (this.contents.find(cont => cont.$key == data.id) == undefined) {
+                this.contents.push(
+                  {
+                    $key: data.id,
+                    title: data.data()['title'],
+                    type: data.data()['type'],
+                    nLikes: data.data()['nLikes'],
+                    nDislikes: data.data()['nDislikes'],
+                    nComments: data.data()['nComments'],
+                    imageUrl: data.data()['imageUrl'],
+                  }
+                );
+              }
             })
           });
         });
@@ -82,7 +84,7 @@ export class PublicPerfilPage implements OnInit {
     }
   }
 
-  goPublicationPage(content){
+  goPublicationPage(content) {
     this.router.navigate([`/tabs/publication/${content.$key}`]);
-   }
+  }
 }
